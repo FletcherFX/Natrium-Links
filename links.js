@@ -6,7 +6,7 @@ const links = {
     telegramChannel: "https://t.me/NatriumProject",
     bugReport: "https://www.donationalerts.com/r/fletcherfx",
     donationAlerts: "https://www.donationalerts.com/r/fletcherfx",
-    modrinth: ""
+    modrinth: "javascript:void(0)"
 };
 
 document.getElementById("site-link").href = links.officialSite;
