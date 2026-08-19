@@ -4,7 +4,7 @@ const links = {
     githubRepo: "https://github.com/FletcherFX/natrium",
     telegramChat: "https://t.me/NatriumChat",
     telegramChannel: "https://t.me/NatriumProject",
-    bugReport: "https://www.donationalerts.com/r/fletcherfx",
+    bugReport: "https://t.me/JavaFixerTEXbot",
     donationAlerts: "https://www.donationalerts.com/r/fletcherfx",
     modrinth: "javascript:void(0)"
 };
