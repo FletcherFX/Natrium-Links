@@ -73,31 +73,30 @@ langBtn.addEventListener("click", () => {
 });
 
 const video = document.getElementById("bg-video");
-let direction = 1;
-let lastTime = null;
 
-video.addEventListener("play", () => {
-    lastTime = null;
-    requestAnimationFrame(reverseLoop);
-});
+if (video) {
+    video.play().catch(() => {});
 
-function reverseLoop(timestamp) {
-    if (!lastTime) lastTime = timestamp;
-    const delta = (timestamp - lastTime) / 1000;
-    lastTime = timestamp;
+    let isReversing = false;
 
-    if (direction === -1) {
-        video.currentTime = Math.max(0, video.currentTime - delta);
-        if (video.currentTime <= 0) {
-            direction = 1;
-            video.play();
-        }
-    } else {
-        if (video.currentTime >= video.duration - 0.1) {
-            direction = -1;
+    video.addEventListener("timeupdate", () => {
+        if (!isReversing && video.currentTime >= video.duration - 0.15) {
+            isReversing = true;
             video.pause();
+            reverseVideo();
         }
-    }
+    });
 
-    requestAnimationFrame(reverseLoop);
+    function reverseVideo() {
+        const step = 0.033;
+        const interval = setInterval(() => {
+            if (video.currentTime <= 0.05) {
+                clearInterval(interval);
+                isReversing = false;
+                video.play();
+            } else {
+                video.currentTime = Math.max(0, video.currentTime - step);
+            }
+        }, 33);
+    }
 }
