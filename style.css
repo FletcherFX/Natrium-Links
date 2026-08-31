@@ -6,9 +6,8 @@
 }
 
 html, body {
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow-x: hidden;
     background: #040108;
 }
 
@@ -16,19 +15,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 40px 20px;
     position: relative;
-}
-
-.bg-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    opacity: 0.35;
-    pointer-events: none;
 }
 
 body::before, body::after {
@@ -64,9 +52,9 @@ body::after {
 .container {
     width: 100%;
     max-width: 1100px;
-    padding: 0 20px;
     z-index: 1;
     transform: scale(0.9);
+    margin-top: -80px;
 }
 
 .main-title {
@@ -180,7 +168,6 @@ body::after {
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(168, 85, 247, 0.1);
     gap: 14px;
-    backdrop-filter: blur(6px);
 }
 
 .card-inner img {
@@ -263,7 +250,7 @@ body::after {
 }
 
 @media (max-width: 1024px) {
-    .container { transform: scale(1); }
+    .container { transform: scale(1); margin-top: -20px; }
     .link-card { height: 80px; }
     .card-inner { font-size: 1.1rem; }
     .links-grid { gap: 16px; }
@@ -272,21 +259,15 @@ body::after {
 }
 
 @media (max-width: 768px) {
-    html, body {
-        height: auto;
-        min-height: 100vh;
-        overflow-y: auto;
-    }
-    body {
-        padding: 40px 0;
-    }
     .links-grid { display: flex; flex-direction: column; gap: 14px; }
     .link-card { height: 70px; }
     .card-inner { font-size: 1.05rem; border-radius: 16px; }
     .main-title { font-size: 2.8rem; margin-bottom: 10px; }
+    .container { margin-top: 0px; }
 }
 
 @media (max-width: 480px) {
+    body { padding: 20px 15px; }
     .main-title { font-size: 2.2rem; }
     .link-card { height: 65px; }
     .card-inner { font-size: 0.95rem; }
