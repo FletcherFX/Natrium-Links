@@ -19,6 +19,18 @@ body {
     position: relative;
 }
 
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
 body::before, body::after {
     content: "";
     position: absolute;
@@ -168,6 +180,7 @@ body::after {
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(168, 85, 247, 0.1);
     gap: 14px;
+    backdrop-filter: blur(6px);
 }
 
 .card-inner img {
