@@ -71,32 +71,3 @@ langBtn.addEventListener("click", () => {
     txtDa.textContent = translations[currentLang].da;
     txtModrinth.textContent = translations[currentLang].modrinth;
 });
-
-const video = document.getElementById("bg-video");
-
-if (video) {
-    video.play().catch(() => {});
-
-    let isReversing = false;
-
-    video.addEventListener("timeupdate", () => {
-        if (!isReversing && video.currentTime >= video.duration - 0.15) {
-            isReversing = true;
-            video.pause();
-            reverseVideo();
-        }
-    });
-
-    function reverseVideo() {
-        const step = 0.033;
-        const interval = setInterval(() => {
-            if (video.currentTime <= 0.05) {
-                clearInterval(interval);
-                isReversing = false;
-                video.play();
-            } else {
-                video.currentTime = Math.max(0, video.currentTime - step);
-            }
-        }, 33);
-    }
-}
