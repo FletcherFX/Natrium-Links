@@ -71,3 +71,33 @@ langBtn.addEventListener("click", () => {
     txtDa.textContent = translations[currentLang].da;
     txtModrinth.textContent = translations[currentLang].modrinth;
 });
+
+const video = document.getElementById("bg-video");
+let direction = 1;
+let lastTime = null;
+
+video.addEventListener("play", () => {
+    lastTime = null;
+    requestAnimationFrame(reverseLoop);
+});
+
+function reverseLoop(timestamp) {
+    if (!lastTime) lastTime = timestamp;
+    const delta = (timestamp - lastTime) / 1000;
+    lastTime = timestamp;
+
+    if (direction === -1) {
+        video.currentTime = Math.max(0, video.currentTime - delta);
+        if (video.currentTime <= 0) {
+            direction = 1;
+            video.play();
+        }
+    } else {
+        if (video.currentTime >= video.duration - 0.1) {
+            direction = -1;
+            video.pause();
+        }
+    }
+
+    requestAnimationFrame(reverseLoop);
+}
